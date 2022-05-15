@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Example</title>
+</head>
+
+<body>
+    <a href="javascript:;" to="home">Go Home Page</a>
+    <a href="javascript:;" to="about">Go About Page</a>
+    <a href="javascript:;" to="my">Go My Page</a>
+    <div>
+        path ：<span id="path">#about</span><br>
+        state ：<span id="state">#about</span>
+    </div>
+</body>
+
+<script>
+    function bindEvent() {
+        const links = document.querySelectorAll("a");
+        [...links].forEach(link => {
+            const linkPath = link.getAttribute("to")
+            link.onclick = () => {
+                window.history.pushState(linkPath, null, linkPath)
+                setSpanInnerText()
+            }
+        })
+    }
+
+    const path = document.querySelector("div #path");
+    const state = document.querySelector("div #state");
+
+    function setSpanInnerText() {
+        path.innerText = window.location.pathname
+        state.innerText = window.history.state
+    }
+
+    setSpanInnerText()
+    bindEvent()
+</script>
+
+</html>

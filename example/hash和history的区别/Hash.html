@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Example</title>
+</head>
+
+<body>
+    <a href="#home">Go Home Page</a>
+    <a href="#about">Go About Page</a>
+    <a href="#my">Go My Page</a>
+    <div>
+        当前 Hash ：<span>#about</span>
+    </div>
+</body>
+
+<script>
+    const span = document.querySelector("div span")
+
+    function setSpanInnerText() {
+        span.innerText = location.hash
+    }
+
+    setSpanInnerText()
+
+    // 监听 Hash 变化
+    window.onhashchange = setSpanInnerText
+</script>
+
+</html>
